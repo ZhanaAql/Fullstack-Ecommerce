@@ -29,7 +29,7 @@ const Add = ({ token }) => {
       formData.append("price", price);
       formData.append("category", category);
       formData.append("subCategory", subCategory);
-      formData.append("bestseller", bestseller);
+  formData.append("bestSeller", bestseller ? "true" : "false");
       formData.append("sizes", JSON.stringify(sizes));
 
       image1 && formData.append("image1", image1);
@@ -43,14 +43,14 @@ const Add = ({ token }) => {
         { headers: { token } }
       );
 
-      // Update toast loading jadi success dan pakai pesan dari response
-      toast.update(loadingToast, {
-        render: response.data.message || "Product added successfully!",
-        type: "success",
-        isLoading: false,
-      });
-
       if (response.data.success) {
+        // Update toast loading jadi success dan pakai pesan dari response
+        toast.update(loadingToast, {
+          render: response.data.message || "Product added successfully!",
+          type: "success",
+          isLoading: false,
+          autoClose: 5000,
+        });
         // Reset form field
         setName("");
         setDescription("");
