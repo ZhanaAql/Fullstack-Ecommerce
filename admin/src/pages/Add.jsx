@@ -11,7 +11,9 @@ const Add = ({ token }) => {
   const [image4, setImage4] = useState(false);
 
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(
+    "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment."
+  );
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("Men");
   const [subCategory, setSubCategory] = useState("Topwear");
@@ -29,7 +31,7 @@ const Add = ({ token }) => {
       formData.append("price", price);
       formData.append("category", category);
       formData.append("subCategory", subCategory);
-  formData.append("bestSeller", bestseller ? "true" : "false");
+      formData.append("bestSeller", bestseller ? "true" : "false");
       formData.append("sizes", JSON.stringify(sizes));
 
       image1 && formData.append("image1", image1);
@@ -53,7 +55,9 @@ const Add = ({ token }) => {
         });
         // Reset form field
         setName("");
-        setDescription("");
+        setDescription(
+          "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment."
+        );
         setImage1(false);
         setImage2(false);
         setImage3(false);
