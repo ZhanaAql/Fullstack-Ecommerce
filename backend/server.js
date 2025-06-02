@@ -11,13 +11,22 @@ import orderRouter from "./routes/orderRoute.js";
 //App Config
 const app = express();
 const port = process.env.PORT || 4000;
+const cors = require("cors");
 connectDB();
 connectCloudinary();
 
 //middlewares
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // untuk dev lokal
+      "https://fullstack-ecommerce-six-livid.vercel.app", // domain Vercel frontend
+    ],
+    credentials: true,
+  })
+);
 
 //API endpoints
 app.use("/api/user", userRouter);
